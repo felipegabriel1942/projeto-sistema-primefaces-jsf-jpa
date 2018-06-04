@@ -203,20 +203,36 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T>{
 
 	@Override
 	public Long totalRegistro(String table) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select count(1) from ").append(table);
+		return jdbcTemplate.queryForLong(sql.toString());
 	}
 
 	@Override
 	public Query obterQuery(String query) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		validaSessionFactory();
+		Query queryReturn = sessionFactory.getCurrentSession().createQuery(query.toString());
+		return queryReturn;
 	}
-
+	
+	/**
+	 * Realiza consulta no banco de dados, iniciando o carregamento a partir do
+	 * regristro passado no parametro -> iniciaRegistro e obtendo maximo de
+	 * resultados passados em -> maximoResulta.
+	 * 
+	 * @param query
+	 * @param iniciaNoRegistro
+	 * @param maximoResultado
+	 * @return List<T>
+	 * @throws Exception
+	 */
 	@Override
 	public List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		validaSessionFactory();
+		List<T> lista = new ArrayList<T>();
+		lista = sessionFactory.getCurrentSession().createQuery(query).setFirstResult(iniciaNoRegistro)
+				.setMaxResults(maximoResultado).list();
+		return lista;
 	}
 	
 	
