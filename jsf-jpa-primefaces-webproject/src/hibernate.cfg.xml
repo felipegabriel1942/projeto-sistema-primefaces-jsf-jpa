@@ -18,5 +18,29 @@
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.generate_statistics">false</property>
+		<property name="hibernate.connection.pool_size">50</property>
+		
+		<mapping class=""/>
+		
+		<!-- Configurações para fazer log dos eventos do banco de dados -->
+		<listener class="org.hibernate.envers.event.AuditEventListener"
+		type="post-insert"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener"
+		type="post-update"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener"
+		type="post-delete"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener"
+		type="post-collection-recreate"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener"
+		type="post-collection-update"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener"
+		type="post-collection-remove"/>
+		
+		<listener class="org.hibernate"/>
 	</session-factory>
 </hibernate-configuration>
