@@ -10,7 +10,6 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
 public abstract @interface IdentificaCampoPesquisa {
-	
 	String descricaoCampo(); // descricação do campo para a tela
 	String campoConsulta(); // campo do banco
 	int principal() default 10000; // posição que irá aparecer no combo
